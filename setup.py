@@ -51,7 +51,7 @@ setup(name='mes_from_cpmd',
                                         #"first_try = mes_from_cpmd.1:main",
                                         "gen_pot = mes_from_cpmd.pot.gen_pot:main",
                                         "cal_dens_for_pot = mes_from_cpmd.cal_dens_for_pot:main",
-                                        "cal_cube_from_wan_for_dens = mes_from_cpmd.cal_cube_from_wan_for_dens:main",
+                                        "cal_cube_from_wan_for_dens = mes_from_cpmd.cal_cube_from_wan_for_dens:main"]
                                         #"second_try = mes_from_cpmd.2:main"]
                                                                },
 include_package_data=True,
