@@ -6,7 +6,7 @@ from chitools import CubeFileTools
 from  geometry import transformations
 import scipy
 from fileio import cube
-from reduced_eigen import elww
+#from reduced_eigen import elww
 
 def over(xx, yy):
     return np.sum(xx * yy)
