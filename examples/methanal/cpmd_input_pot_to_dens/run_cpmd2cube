@@ -1,0 +1,2 @@
+#!/bin/bash
+cpmd2cube_old.x -fullmesh -o DENSITY_fullmesh -dens DENSITY > out_fullmesh.cpmd2cube_old
