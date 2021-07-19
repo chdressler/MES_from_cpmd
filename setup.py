@@ -49,6 +49,9 @@ setup(name='mes_from_cpmd',
                                entry_points={
                                     'console_scripts': [
                                         #"first_try = mes_from_cpmd.1:main",
+                                        "direct_moment_expansion = mes_from_cpmd.direct_moment_expansion:main",
+                                        "eval_mes = mes_from_cpmd.eval_mes:main",
+                                        "wan2cube_cpmd = mes_from_cpmd.wan2cube_cpmd:main",
                                         "gen_pot = mes_from_cpmd.pot.gen_pot:main",
                                         "cal_dens_for_pot = mes_from_cpmd.cal_dens_for_pot:main",
                                         "cal_cube_from_wan_for_dens = mes_from_cpmd.cal_cube_from_wan_for_dens:main",

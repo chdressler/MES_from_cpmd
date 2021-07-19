@@ -22,15 +22,26 @@ def main():
         git_control.get_git_version()
 
         parser = argparse.ArgumentParser()
-        parser.add_argument("--path_to_DENSITY", help="path to DENSITY.cube file of target molecule for MES calculation)", default = "../")
+        parser.add_argument("--path_to_DENSITY", help="path to DENSITY.cube file of target molecule for MES calculation)", default = "../DENSITY.cube")
+        parser.add_argument("n", help="number of monomial basis funtion for perturbing potentials, supported number of monomials: 4,10,20,35 or 56.",type=int)
         args = parser.parse_args()
         
         path_dens = args.path_to_DENSITY
-        fn_cube5 = path_dens + 'DENSITY.cube'
+        fn_cube5 = path_dens 
         cell_data5 = CubeFileTools.LoadCellData(fn_cube5)
-        n_states  = 3
-        exp_order = 1
-        
+        #n_states  = 3
+        #exp_order = 1
+        exp_order_dict = {}
+        #exp_order_dict[1] =  0
+        exp_order_dict[4] =  1
+        exp_order_dict[10] =  2
+        exp_order_dict[20] =  3
+        exp_order_dict[35] =  4
+        exp_order_dict[56] =  5
+        n_states = args.n
+        exp_order = exp_order_dict[n_states]
+        n_states -= 1
+        print(n_states, exp_order) 
         print("atoms", cell_data5['numbers'])
         
         moa = np.copy(np.array(cell_data5['numbers']))
@@ -38,7 +49,7 @@ def main():
         moa[moa == 8] = 16
         print("masses", list(moa))
         origin = transformations.CentersOfMass(cell_data5['coords_au'], moa)
-        ipdb.set_trace()
+#        ipdb.set_trace()
 
         #create lattice coordinates for example r_au[3,108,108,108]
         r_au =CubeFileTools.CalcGridPositions(cell_data5['cell_au'], cell_data5['mesh'], origin)

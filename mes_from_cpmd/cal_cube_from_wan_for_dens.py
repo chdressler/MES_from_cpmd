@@ -30,7 +30,8 @@ def main():
         #path_pot = args.path_to_potentials
         path_inp = args.path_to_input_for_cpmd
         wd = os.getcwd()
-        for i in range(args.n):
+        for j in range(args.n):
+            i = j+1
             #list_files = subprocess.run(["mkdir", str(i)]) 
             os.chdir("./"+ str(i))
             #list_files = subprocess.run(["cp", path_inp +"/wfo.inp", "." ])

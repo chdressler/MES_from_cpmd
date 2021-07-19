@@ -30,14 +30,18 @@ def main():
         path_pot = args.path_to_potentials
         path_inp = args.path_to_input_for_cpmd
         wd = os.getcwd()
-        for i in range(args.n):
+        #'difference_density-%05d.cube'
+        for j in range(args.n):
+            i = j+1
             list_files = subprocess.run(["mkdir", str(i)]) 
             os.chdir("./"+ str(i))
             list_files = subprocess.run(["cp", path_inp +"/wfo.inp", "." ])
             list_files = subprocess.run(["cp", path_inp +"/wfo.job", "." ])
-            list_files = subprocess.run(["cp", path_pot +"/cartesian-functions-0000"+ str(i+1) +".wan", "extpot.unfo.grid" ])
+            #path_pot_final = 
+            list_files = subprocess.run(["cp", path_pot +"/cartesian-functions-%05d.wan"%(i), "extpot.unfo.grid" ])
             os.chdir(wd)            
-        for i in range(args.n):
+        for j in range(args.n):
+            i = j+1
             os.chdir("./"+ str(i))
             print("caluate density for potential number " + str(i))
             list_files = subprocess.run(["bash", "wfo.job"])
