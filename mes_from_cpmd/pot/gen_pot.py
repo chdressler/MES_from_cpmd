@@ -1,15 +1,8 @@
-#import fortran_io as fio
-#from chitools import rpa_tools
 from mes_from_cpmd.toolbox import CubeFileTools
 from mes_from_cpmd.toolbox import transformations
-
-import numpy as np
 from mes_from_cpmd.toolbox import lib_dme as lime
-#from reduced_eigen import calc_dens as calc
 import ipdb
 from mes_from_cpmd.misc import git_control
-
-
 import numpy as np
 import os
 import sys
@@ -49,8 +42,7 @@ def main():
         moa[moa == 8] = 16
         print("masses", list(moa))
         origin = transformations.CentersOfMass(cell_data5['coords_au'], moa)
-#        ipdb.set_trace()
-
+        
         #create lattice coordinates for example r_au[3,108,108,108]
         r_au =CubeFileTools.CalcGridPositions(cell_data5['cell_au'], cell_data5['mesh'], origin)
         

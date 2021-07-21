@@ -1,13 +1,10 @@
 import mes_from_cpmd.ext_fortran.fortran_io as fio
 from mes_from_cpmd.toolbox import CubeFileTools
 from mes_from_cpmd.toolbox import transformations
-
-import numpy as np
 from mes_from_cpmd.toolbox import lib_dme as lime
 import ipdb
 from mes_from_cpmd.misc import git_control
 import mes_from_cpmd.toolbox.cube as cube
-
 import numpy as np
 import os
 import sys
