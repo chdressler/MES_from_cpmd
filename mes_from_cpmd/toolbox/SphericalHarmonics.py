@@ -2,7 +2,7 @@
 import numpy as np
 import gc
 
-from chitools import CubeFileTools
+from mes_from_cpmd.toolbox import CubeFileTools
 
 def ComplexSphericalHarmonics(r_au, order=1):
     # http://en.wikipedia.org/wiki/Table_of_spherical_harmonics
