@@ -14,10 +14,10 @@ def main():
         print(sys.argv)
         git_control.get_git_version()
 
-        parser = argparse.ArgumentParser()
+        parser = argparse.ArgumentParser('calculate (here monomial) basis functions of perturbing potential, requires  the DENSITY.cube file from  cpmd single point calcaultion of the target molecule for the extraction of the  grid parameters.')
         parser.add_argument("--path_to_DENSITY", help="path to DENSITY.cube file of target molecule for MES calculation)", default = "../DENSITY.cube")
         parser.add_argument("n", help="number of monomial basis funtion for perturbing potentials, supported number of monomials: 4,10,20,35 or 56.",type=int)
-        args = parser.parse_args('calculate (here monomial) basis functions of perturbing potential, requires  the DENSITY.cube file from  cpmd single point calcaultion of the target molecule for the extraction of the  grid parameters.')
+        args = parser.parse_args()
         
         path_dens = args.path_to_DENSITY
         fn_cube_ref_dens = path_dens 

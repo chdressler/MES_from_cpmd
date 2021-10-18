@@ -1,3 +1,3 @@
-commit_hash = "41fcf5fbc96dedd898075383fbea4b185ea6c03c"
-commit_message = " ready for github"
-commit_date = "Wed Jul 21 10:50:10 2021 +0200"
+commit_hash = "ff7d53067da72d5b814f9efbdc1a76ba1cb48cc9"
+commit_message = "documentation added"
+commit_date = "Mon Oct 18 13:04:11 2021 +0200"
