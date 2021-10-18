@@ -17,15 +17,12 @@ def main():
         parser = argparse.ArgumentParser()
         parser.add_argument("--path_to_DENSITY", help="path to DENSITY.cube file of target molecule for MES calculation)", default = "../DENSITY.cube")
         parser.add_argument("n", help="number of monomial basis funtion for perturbing potentials, supported number of monomials: 4,10,20,35 or 56.",type=int)
-        args = parser.parse_args()
+        args = parser.parse_args('calculate (here monomial) basis functions of perturbing potential, requires  the DENSITY.cube file from  cpmd single point calcaultion of the target molecule for the extraction of the  grid parameters.')
         
         path_dens = args.path_to_DENSITY
-        fn_cube5 = path_dens 
-        cell_data5 = CubeFileTools.LoadCellData(fn_cube5)
-        #n_states  = 3
-        #exp_order = 1
+        fn_cube_ref_dens = path_dens 
+        cell_data_ref_dens = CubeFileTools.LoadCellData(fn_cube_ref_dens)
         exp_order_dict = {}
-        #exp_order_dict[1] =  0
         exp_order_dict[4] =  1
         exp_order_dict[10] =  2
         exp_order_dict[20] =  3
@@ -35,16 +32,16 @@ def main():
         exp_order = exp_order_dict[n_states]
         n_states -= 1
         print(n_states, exp_order) 
-        print("atoms", cell_data5['numbers'])
+        print("atoms", cell_data_ref_dens['numbers'])
         
-        moa = np.copy(np.array(cell_data5['numbers']))
+        moa = np.copy(np.array(cell_data_ref_dens['numbers']))
         moa[moa == 6] = 12
         moa[moa == 8] = 16
         print("masses", list(moa))
-        origin = transformations.CentersOfMass(cell_data5['coords_au'], moa)
+        origin = transformations.CentersOfMass(cell_data_ref_dens['coords_au'], moa)
         
         #create lattice coordinates for example r_au[3,108,108,108]
-        r_au =CubeFileTools.CalcGridPositions(cell_data5['cell_au'], cell_data5['mesh'], origin)
+        r_au =CubeFileTools.CalcGridPositions(cell_data_ref_dens['cell_au'], cell_data_ref_dens['mesh'], origin)
         
         mompol   = dict()
         moments  = dict()
@@ -77,5 +74,5 @@ def main():
         
         
         
-        lime.print_states_dict(mom_pol_ar*0.001, cell_data5, n_states + 1, 'cartesian-functions-%05d', pure = True, pert = True)
+        lime.print_states_dict(mom_pol_ar*0.001, cell_data_ref_dens, n_states + 1, 'cartesian-functions-%05d', pure = True, pert = True)
 
