@@ -13,7 +13,7 @@ CPMD exectuable
 Installation
 ----------------
 
-python seup.py install
+python setup.py install
 
 How To
 ----------------
@@ -31,6 +31,8 @@ direct_moment_expansion: the most important part of this module. calculates the 
 
 eval_mes: evaluates the calculated moment expanded states, requires the moment expanded stated calculated by this module and the moment expanded states obtained from the AG Sebastiani development version of CPMD.
 
-
+AG Sebastiani members
+---------------
+complete methanal example: /net/shared/dressler/chi/how_to_MES_from_cpmd
 
 
