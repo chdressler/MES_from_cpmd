@@ -1,5 +1,5 @@
 import mes_from_cpmd.ext_fortran.fortran_io as fio
-from mes_from_cpmd.toolbox import CubeFileTool
+from mes_from_cpmd.toolbox import CubeFileTools
 import ipdb
 from mes_from_cpmd.misc import git_control
 import mes_from_cpmd.toolbox.cube as cube 
