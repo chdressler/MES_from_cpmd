@@ -39,7 +39,7 @@ def main():
         cell_data_mom = CubeFileTools.LoadCellData(fn_cube)
 
         #r_au =CubeFileTools.CalcGridPositions(cell_data_mom['cell_au'], cell_data_mom['mesh'], origin)
-        d3r_au = cell_data_mom['d3r_au']
+        #d3r_au = cell_data_mom['d3r_au']
         #dummy, n_x, n_y, n_z = r_au.shape
         #volume_au = d3r_au*n_x*n_y*n_z
 
