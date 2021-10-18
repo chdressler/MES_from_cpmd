@@ -23,7 +23,7 @@ def main():
         print(sys.argv)
         git_control.get_git_version()
 
-        parser = argparse.ArgumentParser()
+        parser = argparse.ArgumentParser(' evaluates the calculated moment expanded states, requires the moment expanded stated calculated by this module and the moment expanded states obtained from the AG Sebastiani development version of CPMD.')
         parser.add_argument("path_to_DENSITY", help="path to DENSITY.cube file of target molecule for MES calculation)", default = "../DENSITY.cube")
         parser.add_argument("path_to_dmes", help="path to  the direct moment expanded states")
         parser.add_argument("path_to_mes", help="path to  the reference moment expanded states")
@@ -61,7 +61,7 @@ def main():
         print("moment matrix for direct moment expanded states ")
         direct_mat = lime.create_overlap_mat(states_dme, states_compare[1:])
         PrintMatrix(direct_mat)
-        #achtung falls die funktion cacl_moments_real_batch benutzt wird muss noch mit *np.sqrt(d3r_au) multipliziert werden
+#########achtung: falls die funktion cacl_moments_real_batch benutzt wird, muss noch mit *np.sqrt(d3r_au) multipliziert werden
 #        print()
 #        PrintMatrix(direct_mat*np.sqrt(d3r_au))
 

@@ -14,7 +14,7 @@ def main():
         print(sys.argv)
         git_control.get_git_version()
 
-        parser = argparse.ArgumentParser()
+        parser = argparse.ArgumentParser('converts CPMD DENSITY files into .cube files, Warning: this script has to be executed on an AMD or Intel node (because it requires an old precompiled fortran script)')
         parser.add_argument("path_to_input_for_cpmd", help="path to files required for density calculation of the target molecule due to the basis function of the  potential (for  CPMD: prepare_wfo, calc_wfo, wfo.job, wfo.inp, col_dens, new_run_cpmd2cube )")
         parser.add_argument("n", help="number of basis funtion of perturbing potentials used for calculation",type=int)
         args = parser.parse_args()

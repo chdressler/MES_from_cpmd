@@ -1,7 +1,5 @@
 import mes_from_cpmd.ext_fortran.fortran_io as fio
-from mes_from_cpmd.toolbox import CubeFileTools
-from mes_from_cpmd.toolbox import transformations
-from mes_from_cpmd.toolbox import lib_dme as lime
+from mes_from_cpmd.toolbox import CubeFileTool
 import ipdb
 from mes_from_cpmd.misc import git_control
 import mes_from_cpmd.toolbox.cube as cube 
@@ -16,7 +14,7 @@ def main():
         print(sys.argv)
         git_control.get_git_version()
 
-        parser = argparse.ArgumentParser()
+        parser = argparse.ArgumentParser('calculate the difference (n_resp = n_pot - n_eq) of the perturbed densities (n_pot) and the equilibrium densitiy  (n_eq) of the target molecule. requires the path to the perturbed densities (n_pot) and the equilibrium densitiy  (n_eq)')
         parser.add_argument("path_to_DENSITY", help="path to DENSITY.cube file of target molecule for MES calculation)", default = "../DENSITY.cube")
         parser.add_argument("path_to_density_responses", help="path to  the overall distorted densities")
         parser.add_argument("n", help="number of basis funtion of perturbing potentials used for calculation",type=int)
