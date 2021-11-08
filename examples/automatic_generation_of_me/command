@@ -1,1 +1,8 @@
-automatic_create_mes /net/shared/dressler/chi/how_to_MES_from_cpmd/cpmd_to_cube_download_2021/cpmd_input_pot_to_dens/wfo.inp  /net/shared/dressler/chi/how_to_MES_from_cpmd/cpmd_to_cube_download_2021/cpmd_input_pot_to_dens/calc.job 10
+automatic_create_mes -h
+
+path_to_repo=path_to_this_directory
+path_to_example=$path_to_repo/MES_from_cpmd/examples/automatic_generation_of_me
+automatic_create_mes $path_to_example/input_files/wfo.inp  $path_to_example/input_files/calc.job 10
+
+eval_mes -h
+eval_mes single_point/DENSITY_fullmesh.cube  moment_expanded_states ../referencs_mes potentials 9

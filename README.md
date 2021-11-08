@@ -8,7 +8,7 @@ Calculation of Moment Expanded states of the static linear density-density respo
 
 Requirements
 ----------------
-CPMD exectuable
+CPMD and cpmd2cube exectuable
 
 Installation
 ----------------
@@ -17,21 +17,17 @@ python setup.py install
 
 How To
 ----------------
-execution order:
+ 
+calculation of mes (moment expanded states) for methanal:
 
-gen_pot: calculate (here monomial) basis functions of perturbing potential, requires  the DENSITY.cube file from  cpmd single point calcaultion of the target molecule for the extraction of the  grid parameters
-.
-cal_dens_for_pot: calculate densities for the applied basis functions of the perturbing potential  (n_pot), requires path to the  basis functions of perturbing potential
+path\_to\_repo=path\_to\_this\_directory
 
-cal_cube_from_wan_for_dens: converts CPMD DENSITY files into .cube files, Warning: this script has to be executed on an AMD or Intel node (because it requires an old precompiled fortran script)
+path\_to\_example=$path\_to\_repo/MES\_from\_cpmd/examples/automatic\_generation\_of\_me
 
-cal_diff_dens: calculate the difference (n_resp = n_pot - n_eq) of the perturbed densities (n_pot) and the equilibrium densitiy  (n_eq) of the target molecule. requires the path to the perturbed densities (n_pot) and the equilibrium densitiy  (n_eq)
+cd $path\_to\_example 
 
-direct_moment_expansion: the most important part of this module. calculates the moment expanded states and performs the actual linear algebra operations. requires the difference densities (n_resp) and the basis functions of the perturbing potential.
+automatic\_create\_mes $path\_to\_example/input\_files/wfo.inp  $path\_to\_example/input\_files/calc.job 10
 
-eval_mes: evaluates the calculated moment expanded states, requires the moment expanded stated calculated by this module and the moment expanded states obtained from the AG Sebastiani development version of CPMD.
+and for benchmarking execute:
 
-AG Sebastiani members
----------------
-complete methanal example: /net/shared/dressler/chi/how_to_MES_from_cpmd
-
+eval\_mes single\_point/DENSITY\_fullmesh.cube  moment\_expanded\_states ../referencs\_mes potentials 9
