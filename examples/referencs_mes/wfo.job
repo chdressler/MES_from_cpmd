@@ -1,0 +1,11 @@
+#!/bin/bash
+#mpirun /shared/dressler/chi/CPMD_okt_2017/CPMD-CHI/BINPAR/cpmd.x  wfo.inp /shared/dressler/cpmd/potentials > neu_compiliert
+exe=/shared/dressler/chi/CPMD_okt_2017/CPMD-CHI/BINPAR/cpmd.x
+pps=/shared/dressler/cpmd/potentials
+
+run=wfo
+rm GEOMETRY* LATEST RESTART.1 $run.err $run.out
+mpirun -n 4 $exe $run.inp $pps 1>> $run.out 2>> $run.err
+mv RESTART.1 WFO-RESTART
+mv GEOMETRY.xyz WFO-GEOMETRY.xyz
+cp WFO-RESTART RESTART

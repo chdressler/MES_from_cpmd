@@ -1,0 +1,4 @@
+rm: cannot remove ‘RESTART.1’: No such file or directory
+rm: cannot remove ‘calc.err’: No such file or directory
+rm: cannot remove ‘calc.out’: No such file or directory
+rm: cannot remove ‘*wan’: No such file or directory

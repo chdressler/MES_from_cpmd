@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+#SBATCH --job-name methanal
+#SBATCH --output output.log
+#SBATCH --partition  batch3
+#SBATCH --nodes 1 
+#SBATCH --ntasks-per-node 16
+#SBATCH --time 72:00:00
+
+# set directory with inputs, must be the full path without /home/username
+startdir=$SLURM_SUBMIT_DIR
+
+cd ${startdir}
+
+
+exe=/shared/dressler/chi/CPMD_okt_2017/CPMD-CHI/BINPAR/cpmd.x
+pps=/shared/dressler/cpmd/potentials
+
+run=calc
+rm GEOMETRY* LATEST RESTART.1 $run.err $run.out *wan
+mpirun $exe $run.inp $pps 1>> $run.out 2>> $run.err

@@ -1,0 +1,405 @@
+ PROGRAM CPMD STARTED AT: Mon Jun  3 13:37:20 2019  
+
+
+               ******  ******    ****  ****  ******   
+              *******  *******   **********  *******  
+             ***       **   ***  ** **** **  **   *** 
+             **        **   ***  **  **  **  **    ** 
+             **        *******   **      **  **    ** 
+             ***       ******    **      **  **   *** 
+              *******  **        **      **  *******  
+               ******  **        **      **  ******   
+
+                          VERSION 3.12.0
+
+                            COPYRIGHT               
+                      IBM RESEARCH DIVISION         
+                MPI FESTKOERPERFORSCHUNG STUTTGART  
+
+                       The CPMD consortium      
+                    WWW:   http://www.cpmd.org
+                 Mailinglist:   cpmd-list@cpmd.org
+                     E-mail:   cpmd@cpmd.org
+
+
+                  ***  Dec 18 2017 -- 15:18:43  ***
+
+ THE INPUT FILE IS:                                       wfo.inp
+ THIS JOB RUNS ON:                                               
+ THE CURRENT DIRECTORY IS: 
+ /net/shared/dressler/chi/paper_no4_theorem/data/new_chis/methanal/1/chi1
+ THE TEMPORARY DIRECTORY IS: 
+ /net/shared/dressler/chi/paper_no4_theorem/data/new_chis/methanal/1/chi1
+ THE PROCESS ID IS:                                         31154
+ THE JOB WAS SUBMITTED BY:                               dressler
+
+
+ ******************************************************************************
+ * INFO - INFO - INFO - INFO - INFO - INFO - INFO - INFO - INFO - INFO - INFO *
+ ******************************************************************************
+ *  CH2O                                                                      *
+ ******************************************************************************
+
+ ******************************************************************************
+ **                              INPUT FILE                                  ** 
+ ******************************************************************************
+ ** &INFO                                                                    ** 
+ **  CH2O                                                                    ** 
+ ** &END                                                                     ** 
+ ** &CPMD                                                                    ** 
+ **  WAVEFUNCTION OPTIMIZATION                                               ** 
+ **  CONVERGENCE ORBITALS                                                    ** 
+ **   1.0D-8                                                                 ** 
+ **  CENTER MOLECULE OFF                                                     ** 
+ **  MIRROR                                                                  ** 
+ **  RHOOUT                                                                  ** 
+ ** &END                                                                     ** 
+ ** &DFT                                                                     ** 
+ **  FUNCTIONAL BLYP                                                         ** 
+ ** &END                                                                     ** 
+ ** &SYSTEM                                                                  ** 
+ **  ANGSTROM                                                                ** 
+ **  POISSON SOLVER TUCKERMAN                                                ** 
+ **  SYMMETRY                                                                ** 
+ **   ISOLATED                                                               ** 
+ **  CELL ABSOLUTE                                                           ** 
+ **   10.00000 10.00000 10.00000 0.0 0.0 0.0                                 ** 
+ **  CUTOFF                                                                  ** 
+ **   70.0                                                                   ** 
+ ** &END                                                                     ** 
+ ** &ATOMS                                                                   ** 
+ ** *C_SG_BLYP                                                               ** 
+ **   LMAX=D                                                                 ** 
+ **    1                                                                     ** 
+ **     4.938259014315      4.391019345769      4.999999996374               ** 
+ ** *O_SG_BLYP                                                               ** 
+ **   LMAX=D                                                                 ** 
+ **    1                                                                     ** 
+ **     5.062115591221      5.612786943958      5.000000001176               ** 
+ ** *H_SG_BLYP                                                               ** 
+ **   LMAX=P                                                                 ** 
+ **    2                                                                     ** 
+ **     3.936142451773      3.898882891681      5.000000001225               ** 
+ **     5.819966890390      3.706643096174      5.000000001225               ** 
+ ** &END                                                                     ** 
+ ******************************************************************************
+ ******************************************************************************
+
+ SINGLE POINT DENSITY OPTIMIZATION
+
+ PATH TO THE RESTART FILES:                                    ./
+ GRAM-SCHMIDT ORTHOGONALIZATION
+ MAXIMUM NUMBER OF STEPS:                             10000 STEPS
+ PRINT INTERMEDIATE RESULTS EVERY                     10001 STEPS
+ STORE INTERMEDIATE RESULTS EVERY                     10001 STEPS
+ NUMBER OF DISTINCT RESTART FILES:                              1
+ TEMPERATURE IS CALCULATED ASSUMING EXTENDED BULK BEHAVIOR 
+ STORE ELECTRON DENSITY AT THE END OF THE RUN
+ FICTITIOUS ELECTRON MASS:                               400.0000
+ TIME STEP FOR ELECTRONS:                                  5.0000
+ TIME STEP FOR IONS:                                       5.0000
+ CONVERGENCE CRITERIA FOR WAVEFUNCTION OPTIMIZATION:   1.0000E-08
+ WAVEFUNCTION OPTIMIZATION BY PRECONDITIONED DIIS
+ THRESHOLD FOR THE WF-HESSIAN IS                           0.5000
+ MAXIMUM NUMBER OF VECTORS RETAINED FOR DIIS:                  10
+ STEPS UNTIL DIIS RESET ON POOR PROGRESS:                      10
+ FULL ELECTRONIC GRADIENT IS USED 
+ SPLINE INTERPOLATION IN G-SPACE FOR PSEUDOPOTENTIAL FUNCTIONS
+    NUMBER OF SPLINE POINTS:                                 5000
+
+ EXCHANGE CORRELATION FUNCTIONALS 
+    LDA EXCHANGE:                        SLATER (ALPHA = 0.66667)
+    LDA CORRELATION:                             LEE, YANG & PARR
+       [C.L. LEE, W. YANG, AND R.G. PARR, PRB 37 785 (1988)]
+    GRADIENT CORRECTED FUNCTIONAL
+    DENSITY THRESHOLD:                                1.00000E-08
+    EXCHANGE ENERGY
+       [A.D. BECKE, PHYS. REV. A 38, 3098 (1988)]
+       PARAMETER BETA:                                   0.004200
+    CORRELATION ENERGY
+       [LYP: C.L. LEE ET AL. PHYS. REV. B 37, 785 (1988)]
+
+ ***     DETSP| SIZE OF THE PROGRAM IS   11688/ 438664 kBYTES ***
+
+ ***************************** ATOMS ****************************
+   NR   TYPE        X(bohr)        Y(bohr)        Z(bohr)     MBL
+    1      C       9.331956       8.297823       9.448630       3
+    2      O       9.566011      10.606629       9.448630       3
+    3      H       7.438231       7.367820       9.448630       3
+    4      H      10.998143       7.004540       9.448630       3
+ ****************************************************************
+
+ NUMBER OF STATES:                                              6
+ NUMBER OF ELECTRONS:                                    12.00000
+ CHARGE:                                                  0.00000
+ ELECTRON TEMPERATURE(KELVIN):                            0.00000
+ OCCUPATION
+  2.0  2.0  2.0  2.0  2.0  2.0
+
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
+    >    CARBON BLYP-PSEUDOPOTENTIAL (GOEDECKER TYPE)          >  
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
+
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
+    >    OXYGEN BLYP-PSEUDOPOTENTIAL (GOEDECKER TYPE)          >  
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
+
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
+    >    HYDROGEN BLYP-PSEUDOPOTENTIAL (GOEDECKER TYPE)        >  
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
+
+ ****************************************************************
+ *   ATOM       MASS   RAGGIO NLCC              PSEUDOPOTENTIAL *
+ *      C    12.0112   1.2000   NO   GOEDECKER      S  NONLOCAL *
+ *                                                  P     LOCAL *
+ *      O    15.9994   1.2000   NO   GOEDECKER      S  NONLOCAL *
+ *                                                  P     LOCAL *
+ *      H     1.0080   1.2000   NO                  S     LOCAL *
+ ****************************************************************
+
+
+ PARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARA
+IATPE  1 =  3
+IATPE  2 =  2
+IATPE  3 =  1
+IATPE  4 =  0
+NATPE  0 =  1
+NATPE  1 =  1
+NATPE  2 =  1
+NATPE  3 =  1
+  NCPU     NGW     NHG  PLANES  GXRAYS  HXRAYS ORBITALS Z-PLANES
+     0    8349   66739      27     498    1990       1       1
+     1    8359   66758      27     498    1992       2       1
+     2    8365   66764      27     498    1992       1       1
+     3    8365   66712      27     499    1991       2       1
+                G=0 COMPONENT ON PROCESSOR :     3
+ PARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARAPARA
+
+ ***    LOADPA| SIZE OF THE PROGRAM IS   18728/ 441808 kBYTES ***
+
+ OPENMPOPENMPOPENMPOPENMPOPENMPOPENMPOPENMPOPENMPOPENMPOPENMPOPEN
+ NUMBER OF CPUS PER TASK                                        1
+ OPENMPOPENMPOPENMPOPENMPOPENMPOPENMPOPENMPOPENMPOPENMPOPENMPOPEN
+
+ ***     RGGEN| SIZE OF THE PROGRAM IS   20300/ 443112 kBYTES ***
+
+ ************************** SUPERCELL ***************************
+ THIS IS AN ISOLATED SYSTEM CALCULATION 
+ POISSON EQUATION SOLVER  :                   TUCKERMAN & MARTYNA
+ SHORT RANGE POTENTIAL LENGTH * BOX LENGTH                  7.000
+ SYMMETRY:                                           SIMPLE CUBIC
+ LATTICE CONSTANT(a.u.):                                 18.89726
+ CELL DIMENSION:  18.8973  1.0000  1.0000  0.0000  0.0000  0.0000
+ VOLUME(OMEGA IN BOHR^3):                              6748.33304
+ LATTICE VECTOR A1(BOHR):           18.8973     0.0000     0.0000
+ LATTICE VECTOR A2(BOHR):            0.0000    18.8973     0.0000
+ LATTICE VECTOR A3(BOHR):            0.0000     0.0000    18.8973
+ RECIP. LAT. VEC. B1(2Pi/BOHR):      0.0529     0.0000     0.0000
+ RECIP. LAT. VEC. B2(2Pi/BOHR):      0.0000     0.0529     0.0000
+ RECIP. LAT. VEC. B3(2Pi/BOHR):      0.0000     0.0000     0.0529
+ REAL SPACE MESH:                   108          108          108
+ WAVEFUNCTION CUTOFF(RYDBERG):                           70.00000
+ DENSITY CUTOFF(RYDBERG):          (DUAL= 4.00)         280.00000
+ NUMBER OF PLANE WAVES FOR WAVEFUNCTION CUTOFF:             33438
+ NUMBER OF PLANE WAVES FOR DENSITY CUTOFF:                 266973
+ ****************************************************************
+
+ ***  RINFORCE| SIZE OF THE PROGRAM IS   25408/ 448364 kBYTES ***
+ ***    FFTPRP| SIZE OF THE PROGRAM IS   35436/ 458396 kBYTES ***
+ ***   CLUSTER| SIZE OF THE PROGRAM IS   36316/ 458396 kBYTES ***
+
+ GENERATE ATOMIC BASIS SET
+      C        SLATER ORBITALS
+        2S        ALPHA=   1.6083      OCCUPATION= 2.00
+        2P        ALPHA=   1.5679      OCCUPATION= 2.00
+      O        SLATER ORBITALS
+        2S        ALPHA=   2.2458      OCCUPATION= 2.00
+        2P        ALPHA=   2.2266      OCCUPATION= 4.00
+      H        SLATER ORBITALS
+        1S        ALPHA=   1.0000      OCCUPATION= 1.00
+
+
+ INITIALIZATION TIME:                             3787.26 SECONDS
+
+ ***    WFOPTS| SIZE OF THE PROGRAM IS   37900/ 474256 kBYTES ***
+ ***     PHFAC| SIZE OF THE PROGRAM IS   38044/ 495872 kBYTES ***
+ ***    ATOMWF| SIZE OF THE PROGRAM IS   38740/ 497700 kBYTES ***
+ ATRHO| CHARGE(R-SPACE):   12.000000      (G-SPACE):   12.000000
+
+ ****************************************************************
+ *                      ATOMIC COORDINATES                      *
+ ****************************************************************
+       1       C           9.331956       8.297823       9.448630
+       2       O           9.566011      10.606629       9.448630
+       3       H           7.438231       7.367820       9.448630
+       4       H          10.998143       7.004540       9.448630
+ ****************************************************************
+
+
+ CPU TIME FOR WAVEFUNCTION INITIALIZATION:        7833.42 SECONDS
+ ***    RWFOPT| SIZE OF THE PROGRAM IS   63612/ 497700 kBYTES ***
+ EWALD| SUM IN REAL SPACE OVER                      1* 1* 1 CELLS
+
+ TOTAL INTEGRATED ELECTRONIC DENSITY
+    IN G-SPACE =                                        12.000000
+    IN R-SPACE =                                        12.000000
+ (A)      (E+I)-(E+I) HARTREE ENERGY =            0.39691466 A.U.
+
+ (K+E1+L+N+X)           TOTAL ENERGY =          -22.03261653 A.U.
+ (K)                  KINETIC ENERGY =           15.15488177 A.U.
+ (E1=A-S+R)     ELECTROSTATIC ENERGY =          -16.70268452 A.U.
+ (S)                           ESELF =           17.95240262 A.U.
+ (R)                             ESR =            0.85280344 A.U.
+ (L)    LOCAL PSEUDOPOTENTIAL ENERGY =          -17.81147164 A.U.
+ (N)      N-L PSEUDOPOTENTIAL ENERGY =            3.03127942 A.U.
+ (X)     EXCHANGE-CORRELATION ENERGY =           -5.70462156 A.U.
+         GRADIENT CORRECTION ENERGY =            -0.31213095 A.U.
+
+ NFI      GEMAX       CNORM           ETOT        DETOT      TCPU
+   1  2.700E-02   6.062E-03     -22.032617    0.000E+00   4785.77
+   2  2.333E-02   1.832E-03     -22.512909   -4.803E-01   4803.55
+   3  2.285E-02   9.855E-04     -22.564545   -5.164E-02   4948.06
+   4  1.394E-02   5.530E-04     -22.581276   -1.673E-02   4921.04
+   5  7.908E-03   3.291E-04     -22.587312   -6.036E-03   4889.98
+   6  3.182E-03   2.291E-04     -22.590125   -2.813E-03   4886.95
+   7  1.437E-03   1.680E-04     -22.591693   -1.568E-03   4986.60
+   8  1.249E-03   1.150E-04     -22.592636   -9.435E-04   5031.07
+   9  5.815E-04   7.054E-05     -22.593150   -5.133E-04   5046.90
+  10  2.646E-04   4.372E-05     -22.593360   -2.100E-04   5056.08
+  11  2.068E-04   2.777E-05     -22.593454   -9.399E-05   4910.03
+  12  1.298E-04   1.657E-05     -22.593498   -4.400E-05   5283.78
+  13  1.257E-04   8.223E-06     -22.593515   -1.750E-05   5063.03
+  14  7.541E-05   4.604E-06     -22.593519   -3.826E-06   5283.09
+  15  4.614E-05   2.621E-06     -22.593520   -8.943E-07   5036.93
+  16  2.421E-05   1.531E-06     -22.593520   -2.524E-07   5150.53
+  17  1.164E-05   8.194E-07     -22.593520   -6.846E-08   5092.45
+  18  5.797E-06   4.185E-07     -22.593520   -1.739E-08   5062.56
+  19  3.388E-06   2.608E-07     -22.593520   -4.045E-09   5203.30
+  20  1.515E-06   1.756E-07     -22.593520   -1.583E-09   5149.89
+  21  9.127E-07   1.256E-07     -22.593520   -7.097E-10   5121.11
+  22  6.030E-07   8.741E-08     -22.593520   -4.542E-10   5057.16
+  23  4.758E-07   6.402E-08     -22.593520   -2.135E-10   5156.38
+  24  2.790E-07   4.723E-08     -22.593520   -1.337E-10   5070.33
+  25  2.158E-07   3.582E-08     -22.593520   -7.147E-11   4918.16
+  26  1.549E-07   2.436E-08     -22.593520   -5.515E-11   5250.24
+  27  1.189E-07   1.402E-08     -22.593520   -3.411E-11   5106.62
+  28  7.115E-08   7.958E-09     -22.593520   -1.214E-11   5035.71
+  29  4.732E-08   4.603E-09     -22.593520   -2.970E-12   5035.82
+  30  3.298E-08   2.893E-09     -22.593520   -7.603E-13   5184.04
+  31  1.446E-08   1.902E-09     -22.593520   -3.659E-13   5111.69
+  32  1.204E-08   1.304E-09     -22.593520   -1.350E-13   5119.49
+  33  7.355E-09   9.498E-10     -22.593520   -1.172E-13   5074.87
+
+ RESTART INFORMATION WRITTEN ON FILE                  ./RESTART.1
+ DENSITY WRITTEN TO FILE DENSITY
+ ***    RWFOPT| SIZE OF THE PROGRAM IS   70716/ 499052 kBYTES ***
+
+ ****************************************************************
+ *                                                              *
+ *                        FINAL RESULTS                         *
+ *                                                              *
+ ****************************************************************
+
+ ****************************************************************
+ *                      ATOMIC COORDINATES                      *
+ ****************************************************************
+       1       C           9.331956       8.297823       9.448630
+       2       O           9.566011      10.606629       9.448630
+       3       H           7.438231       7.367820       9.448630
+       4       H          10.998143       7.004540       9.448630
+ ****************************************************************
+
+
+ ****************************************************************
+
+
+ ELECTRONIC GRADIENT:
+    MAX. COMPONENT =    7.35469E-09         NORM =    9.49833E-10
+
+ TOTAL INTEGRATED ELECTRONIC DENSITY
+    IN G-SPACE =                                        12.000000
+    IN R-SPACE =                                        12.000000
+ (A)      (E+I)-(E+I) HARTREE ENERGY =            0.42453329 A.U.
+
+ (K+E1+L+N+X)           TOTAL ENERGY =          -22.59352014 A.U.
+ (K)                  KINETIC ENERGY =            4.18779299 A.U.
+ (E1=A-S+R)     ELECTROSTATIC ENERGY =          -16.67506589 A.U.
+ (S)                           ESELF =           17.95240262 A.U.
+ (R)                             ESR =            0.85280344 A.U.
+ (L)    LOCAL PSEUDOPOTENTIAL ENERGY =          -18.71597136 A.U.
+ (N)      N-L PSEUDOPOTENTIAL ENERGY =            1.80620993 A.U.
+ (X)     EXCHANGE-CORRELATION ENERGY =           -5.80293643 A.U.
+         GRADIENT CORRECTION ENERGY =            -0.33582261 A.U.
+
+ ****************************************************************
+
+
+ ================================================================
+                      BIG MEMORY ALLOCATIONS 
+ ATWFR             301200                INZHP             300326
+ SCR              1737713                YF                641574
+ PME               501020                ATWFR_EPR         301200
+ VR                641574                RHOE              320787
+ XF                641574                PSI               641574
+ ----------------------------------------------------------------
+ [PEAK NUMBER   93]      PEAK MEMORY      8104292 =   64.8 MBytes
+ ================================================================
+
+
+ ****************************************************************
+ *                                                              *
+ *                            TIMING                            *
+ *                                                              *
+ ****************************************************************
+ SUBROUTINE            CALLS         CPU TIME        ELAPSED TIME
+    FFT-G/S             1554         25674.67                2.74
+     GLOSUM              321         15832.37                1.68
+   N-FFTCOM              312         15233.70                1.50
+      FWFFT              172         14895.93                1.55
+     GCENER               34         14602.68                1.51
+     INVFFT              137         13956.06                1.45
+    INVFFTN              207         13206.89                1.36
+      ODIIS               33         10616.93                1.04
+     FWFFTN              105          5591.49                0.58
+     XCENER               34          5287.29                0.55
+     SUMFNL               38          5087.88                0.51
+     GRADEN               34          4799.84                0.50
+     FFTCOM              309          4638.70                0.47
+      PHASE              309          4090.96                0.43
+     RHOOFR               34          3831.22                0.41
+       VPSI               37          3798.83                0.40
+      ATRHO                1          2076.35                0.21
+     EICALC               34          1932.66                0.20
+     LOADPA                1          1413.02                0.14
+    VOFRHOB               34          1353.99                0.14
+    VOFRHOT               34          1261.50                0.13
+        RGS               33           660.09                0.09
+    W_WFNIO                1           440.66                0.07
+      NUMPW                1           396.22                0.04
+     FORCES               33           355.61                0.04
+    FNONLOC               37           345.74                0.04
+ ----------------------------------------------------------------
+ TOTAL TIME                         171381.28               17.80
+ ****************************************************************
+
+       CPU TIME :   50 HOURS  9 MINUTES 28.65 SECONDS     
+   ELAPSED TIME :    0 HOURS  0 MINUTES 19.06 SECONDS     
+ ***      CPMD| SIZE OF THE PROGRAM IS   57256/ 485476 kBYTES ***
+
+ PROGRAM CPMD ENDED AT:   Mon Jun  3 13:37:39 2019  
+
+ ================================================================
+ = COMMUNICATION TASK  AVERAGE MESSAGE LENGTH  NUMBER OF CALLS  =
+ = SEND/RECEIVE              155907. BYTES                 45.  =
+ = BROADCAST                  23588. BYTES                298.  =
+ = GLOBAL SUMMATION             714. BYTES                500.  =
+ = GLOBAL MULTIPLICATION          0. BYTES                  1.  =
+ = ALL TO ALL COMM          2145992. BYTES                621.  =
+ =                             PERFORMANCE          TOTAL TIME  =
+ = SEND/RECEIVE                0.017  MB/S         423.000 SEC  =
+ = BROADCAST                   0.138  MB/S          50.830 SEC  =
+ = GLOBAL SUMMATION            0.000  MB/S       26553.840 SEC  =
+ = GLOBAL MULTIPLICATION       0.000  MB/S           0.001 SEC  =
+ = ALL TO ALL COMM             0.067  MB/S       19851.320 SEC  =
+ = SYNCHRONISATION                                   1.200 SEC  =
+ ================================================================
