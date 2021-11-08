@@ -7,6 +7,8 @@ from  mes_from_cpmd.toolbox import transformations
 import scipy
 from mes_from_cpmd.toolbox import cube
 #from reduced_eigen import elww
+from scipy.integrate import simps
+from scipy.integrate import romb
 
 def over(xx, yy):
     return np.sum(xx * yy)
@@ -30,8 +32,32 @@ def err_mult(xx, yy):
     #xx1 = xx / over(xx, xx)**0.5
     #yy1 = yy / over(yy, yy)**0.5
     #return abs(over(xx1, yy1))   
+
 def over(xx, yy):
     return np.sum(xx * yy)
+
+
+#def over(xx, yy):
+#    func =  xx *yy
+#    dx = func[1:,:,:] - func[:-1,:,:] 
+#    dy = func[:,1:,:] - func[:,:-1,:] 
+#    dz = func[:,:,1:] - func[:,:,:-1] 
+#    func[:-1,:-1,:-1] += 0.5 *(dx[:,:-1,:-1]+dy[:-1,:,:-1]+dz[:-1,:-1,:])
+#    return np.sum(func[:-1,:-1,:-1])
+
+#def over(xx, yy):
+#    func =  xx *yy
+#    return  simps(simps(simps(func)))
+
+
+#def over(xx, yy):
+#    func =  xx *yy
+#    vol1 = np.zeros((129,129,129))
+#    vol1[10:118,10:118,10:118] = func
+#    return  romb(romb(romb(vol1)))
+
+
+
 
 def create_overlap_mat(*states4 ):
     #if states2.all() ==  None:
@@ -292,7 +318,7 @@ def load_states_single(fn_cube, bn_states, pure =  False, pert = False):
         print('true aa')
     else:    
         states = state_data/np.sqrt(n_x*n_y*n_z)
-    print(np.sum(states**2), np.sum(abs(states)))
+    print(np.sum(states**2), np.sum(abs(states)), np.sum(states))
     return states
 
 

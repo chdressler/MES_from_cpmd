@@ -1,3 +1,3 @@
-commit_hash = "ff7d53067da72d5b814f9efbdc1a76ba1cb48cc9"
-commit_message = "documentation added"
-commit_date = "Mon Oct 18 13:04:11 2021 +0200"
+commit_hash = "3225053653f881ee0e076c52c6d1fa816fbcf4ba"
+commit_message = "small fix"
+commit_date = "Mon Oct 18 15:14:16 2021 +0200"

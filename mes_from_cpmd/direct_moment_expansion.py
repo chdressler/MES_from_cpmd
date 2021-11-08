@@ -6,17 +6,39 @@ from mes_from_cpmd.toolbox import lib_dme as lime
 import ipdb
 from mes_from_cpmd.misc import git_control
 import mes_from_cpmd.toolbox.cube as cube 
+from scipy.signal import convolve
 
 import numpy as np
 import os
 import sys
 import argparse
 import subprocess
-
+import ipdb
+from scipy.ndimage import gaussian_filter
 
 def PrintMatrix(mat):
     for i in range(mat.shape[0]):
         print(('%12.6F'*mat.shape[1])%tuple(mat[i]))
+
+
+def gauss_kern_3d(size):
+    size = int(size)
+    #if not sizey:
+    #    sizey = size
+    #else:
+    #    sizey = int(sizey)
+    #from mes_from_cpmd.toolbox import CubeFileTools
+
+    cell_au = np.array([[1,0,0],[0,1,0],[0,0,1]])
+    mesh = np.array([2*size+1,2*size+1,2*size+1])
+    origin = np.array([size,size,size])
+    r_au =CubeFileTools.CalcGridPositions(cell_au, mesh, origin)
+    
+    size = 0.1 *size
+    #x, y = mgrid[-size:size+1, -size:size+1]
+    #g = exp(-(x**2/float(size)+y**2/float(sizey)))
+    g = np.exp(-(r_au[0,:,:,:]**2/float(size)+r_au[1,:,:,:]**2/float(size)+r_au[2,:,:,:]**2/float(size)))
+    return g / g.sum()
 
 
 
@@ -30,6 +52,7 @@ def main():
         parser.add_argument("path_to_difference_densities", help="path to  the difference densities (= ntilde states)")
         parser.add_argument("path_to_potentials", help="path to  the basis function of the  potential")
         parser.add_argument("n", help="number of basis funtion of perturbing potentials used for calculation",type=int)
+        parser.add_argument('--smooth', type = int,  help='Size of Gaussian for convolution')
         args = parser.parse_args()
         path_pot = args.path_to_potentials
         path_diff = args.path_to_difference_densities
@@ -43,12 +66,28 @@ def main():
         fn3 = path_diff + '/difference_density-%05d.wan'
         #load raw density responses (=states_tilde) from cpmd
         states_tilde = lime.load_states(fn_cube, fn3, n_states, pure =  True, pert = False)
+        
 
+        
         print("overlaps of difference densities (=ntilde states) with basis functions of perturbing potential  ")
+        #mom_tilde_self = lime.create_overlap_mat(states_tilde*d3r_au *1000, states_compare/0.001)
+        
+        if args.smooth:  
+            ipdb.set_trace()
+            gauss_kernel = gauss_kern_3d(args.smooth)
+            for i in range(states_tilde.shape[0]):
+            #states_tilde[i] = convolve(states_tilde[i] ,gauss_kernel , mode='valid')
+                #states_tilde[i] = convolve(states_tilde[i] ,gauss_kernel , mode='same')
+                states_tilde[i] = gaussian_filter(states_tilde[i] , sigma=args.smooth)
+            #states_tilde[i] = convolve(states_tilde[i] ,gauss_kernel )
+            #data = gaussian_filter(data, sigma=10) 
+        print("again overlaps of difference densities (=ntilde states) with basis functions of perturbing potential  ")
         mom_tilde_self = lime.create_overlap_mat(states_tilde*d3r_au *1000, states_compare/0.001)
         print("native overlap matrix")
         PrintMatrix(mom_tilde_self[1:n_states, 1:n_states])
         avg_mom_tilde = (mom_tilde_self[1:n_states, 1:n_states] + mom_tilde_self[1:n_states, 1:n_states].T)/2
+        #avg_mom_tilde = (mom_tilde_self[1:n_states, 1:n_states].T + mom_tilde_self[1:n_states, 1:n_states].T)/2
+        #avg_mom_tilde = (mom_tilde_self[1:n_states, 1:n_states] + mom_tilde_self[1:n_states, 1:n_states])/2
         print("symmetrized overlap matrix")
         PrintMatrix(avg_mom_tilde)
 
@@ -65,7 +104,8 @@ def main():
         for i in range(n_states-1):
             for j in range(n_states-1):
                 #mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*1000*np.sqrt(d3r_au)
-                mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*1000*np.sqrt(d3r_au) *  -1000 
+                mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*1000*np.sqrt(d3r_au) *  -1000 /8
+                #mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*d3r_au  
 
         bn_states_out = 'dme-%05d.wan'       
         bn_cube_out  =  'dme-%05d.cube'
@@ -74,7 +114,7 @@ def main():
         for i_state in range(n_states-1):
            state_data = np.asfortranarray(mom_states_new[i_state]).astype(np.float64)
            fio.fortran_write_unformatted(bn_states_out%(i_state+1), state_data, n_x, n_y, n_z)
-           cube.WriteCubeFile(bn_cube_out%(i_state+1),'','', cell_data_mom['numbers'], cell_data_mom['coords_au'], cell_data_mom['cell_au'], state_data, origin=cell_data_mom['origin_au'])
+           #cube.WriteCubeFile(bn_cube_out%(i_state+1),'','', cell_data_mom['numbers'], cell_data_mom['coords_au'], cell_data_mom['cell_au'], state_data, origin=cell_data_mom['origin_au'])
 
 
 

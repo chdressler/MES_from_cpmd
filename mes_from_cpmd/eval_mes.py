@@ -57,9 +57,13 @@ def main():
 
         print("moment matrix for reference moment expanded states ")
         ref_mat = lime.create_overlap_mat(states_mes, states_compare[1:])
+        #ref_mat *= 2
         PrintMatrix(ref_mat)
         print("moment matrix for direct moment expanded states ")
+        
         direct_mat = lime.create_overlap_mat(states_dme, states_compare[1:])
+        #direct_mat *= 1000 * 1000
+        #direct_mat *= 61.511969/direct_mat[0]
         PrintMatrix(direct_mat)
 #########achtung: falls die funktion cacl_moments_real_batch benutzt wird, muss noch mit *np.sqrt(d3r_au) multipliziert werden
 #        print()

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import numpy as np
-
+import ipdb
 #from lib import constants
 from mes_from_cpmd.toolbox import constants
 from mes_from_cpmd.toolbox import cube
@@ -48,6 +48,7 @@ def LoadCellData(fn_cube):
     cell_data['mesh'     ] = data.shape
     cell_data['d3r_au'   ] = cell_au[0,0]*cell_au[1,1]*cell_au[2,2]
     cell_data['volume_au'] = cell_data['d3r_au']*data.shape[0]*data.shape[1]*data.shape[2]
+    #ipdb.set_trace()
     cell_data['r_au'     ] = CalcGridPositions(cell_au, data.shape, origin_au=origin_au)
     cell_data['data'     ] = data
     cell_data['comment1' ] = comment1
@@ -62,9 +63,12 @@ def CalcGridPositions(cell_au, mesh, origin_au=None):
     a_x, a_y, a_z = cell_au[0][0], cell_au[1][1], cell_au[2][2]
     if origin_au.all() == None:
         origin_au = np.array([n_x*a_x, n_y*a_y, n_z*a_z])/2
-    x_au = np.arange(0, n_x*a_x, a_x) - origin_au[0]
-    y_au = np.arange(0, n_y*a_y, a_y) - origin_au[1]
-    z_au = np.arange(0, n_z*a_z, a_z) - origin_au[2]
+    #x_au = np.arange(0, n_x*a_x, a_x) - origin_au[0]
+    #y_au = np.arange(0, n_y*a_y, a_y) - origin_au[1]
+    #z_au = np.arange(0, n_z*a_z, a_z) - origin_au[2]
+    x_au = np.arange(0, n_x, 1)*a_x - origin_au[0]
+    y_au = np.arange(0, n_y, 1)*a_y - origin_au[1]
+    z_au = np.arange(0, n_z, 1)*a_z - origin_au[2]
     r_au = np.zeros((3, n_x, n_y, n_z)) #NB! Changed to row-major-order!
     r_au[0,:,:,:] = x_au[:,np.newaxis,np.newaxis]
     r_au[1,:,:,:] = y_au[np.newaxis,:,np.newaxis]

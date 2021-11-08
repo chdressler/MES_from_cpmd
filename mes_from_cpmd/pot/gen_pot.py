@@ -17,6 +17,7 @@ def main():
         parser = argparse.ArgumentParser('calculate (here monomial) basis functions of perturbing potential, requires  the DENSITY.cube file from  cpmd single point calcaultion of the target molecule for the extraction of the  grid parameters.')
         parser.add_argument("--path_to_DENSITY", help="path to DENSITY.cube file of target molecule for MES calculation)", default = "../DENSITY.cube")
         parser.add_argument("n", help="number of monomial basis funtion for perturbing potentials, supported number of monomials: 4,10,20,35 or 56.",type=int)
+        parser.add_argument('--fac', type = float,  help='Factor for rescaling of potential')
         args = parser.parse_args()
         
         path_dens = args.path_to_DENSITY
@@ -51,8 +52,10 @@ def main():
         for i_order in range(1, exp_order+1):
                     #evaluate polynoms on grid
                     mompol['%02d'%i_order] = CubeFileTools.CartesianMoments(r_au, order=i_order)
-        mom_pol_ar = np.zeros((n_states + 1 , 108, 108 , 108))
-        mom_pol_ar[0] = np.ones((108, 108 , 108))
+        #mom_pol_ar = np.zeros((n_states + 1 , 108, 108 , 108))
+        mom_pol_ar = np.zeros((n_states + 1 , cell_data_ref_dens['mesh'][0], cell_data_ref_dens['mesh'][1] , cell_data_ref_dens['mesh'][2]))
+        #mom_pol_ar[0] = np.ones((108, 108 , 108))
+        mom_pol_ar[0] = np.ones((cell_data_ref_dens['mesh'][0], cell_data_ref_dens['mesh'][1] , cell_data_ref_dens['mesh'][2]))
         
         
         
@@ -73,6 +76,8 @@ def main():
                     print('index error')
         
         
-        
-        lime.print_states_dict(mom_pol_ar*0.001, cell_data_ref_dens, n_states + 1, 'cartesian-functions-%05d', pure = True, pert = True)
+        if args.fac:
+            lime.print_states_dict(mom_pol_ar*0.001*args.fac, cell_data_ref_dens, n_states + 1, 'cartesian-functions-%05d', pure = True, pert = True)
+        else:
+            lime.print_states_dict(mom_pol_ar*0.001, cell_data_ref_dens, n_states + 1, 'cartesian-functions-%05d', pure = True, pert = True)
 
