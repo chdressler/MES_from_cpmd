@@ -21,12 +21,12 @@ def main():
         args = parser.parse_args()
         cube_ref_eq = args.path_to_DENSITY
         path_resp = args.path_to_density_responses
-        
-
-        ref_eq = CubeFileTools.LoadCellData(cube_ref_eq) 
-                
-        
         j = args.n
+        calc_diff_dens(path_resp, cube_ref_eq, j)
+
+        
+def calc_diff_densities(path_resp, cube_ref_eq, j):
+        ref_eq = CubeFileTools.LoadCellData(cube_ref_eq) 
         states_ntilde = []
         for k in range(j):
             i = k + 1

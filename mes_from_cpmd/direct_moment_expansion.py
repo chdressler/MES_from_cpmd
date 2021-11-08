@@ -58,7 +58,11 @@ def main():
         path_diff = args.path_to_difference_densities
         n_states = args.n
         fn_cube = args.path_to_DENSITY
+        smooth = args.smooth
 
+
+
+def perform_direct_me(fn_cube, path_diff, path_pot, n_states, smooth):
         cell_data_mom = CubeFileTools.LoadCellData(fn_cube)
         d3r_au = cell_data_mom['d3r_au']
         fn2 = path_pot + '/cartesian-functions-%05d.wan'
@@ -72,13 +76,13 @@ def main():
         print("overlaps of difference densities (=ntilde states) with basis functions of perturbing potential  ")
         #mom_tilde_self = lime.create_overlap_mat(states_tilde*d3r_au *1000, states_compare/0.001)
         
-        if args.smooth:  
-            ipdb.set_trace()
-            gauss_kernel = gauss_kern_3d(args.smooth)
+        if smooth:  
+            #ipdb.set_trace()
+            gauss_kernel = gauss_kern_3d(smooth)
             for i in range(states_tilde.shape[0]):
             #states_tilde[i] = convolve(states_tilde[i] ,gauss_kernel , mode='valid')
                 #states_tilde[i] = convolve(states_tilde[i] ,gauss_kernel , mode='same')
-                states_tilde[i] = gaussian_filter(states_tilde[i] , sigma=args.smooth)
+                states_tilde[i] = gaussian_filter(states_tilde[i] , sigma=smooth)
             #states_tilde[i] = convolve(states_tilde[i] ,gauss_kernel )
             #data = gaussian_filter(data, sigma=10) 
         print("again overlaps of difference densities (=ntilde states) with basis functions of perturbing potential  ")

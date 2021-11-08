@@ -48,6 +48,7 @@ setup(name='mes_from_cpmd',
      long_description=readme(),
                                entry_points={
                                     'console_scripts': [
+                                        "automatic_create_mes = mes_from_cpmd.automatic_create_mes:main",
                                         "direct_moment_expansion = mes_from_cpmd.direct_moment_expansion:main",
                                         "eval_mes = mes_from_cpmd.eval_mes:main",
                                         "wan2cube_cpmd = mes_from_cpmd.wan2cube_cpmd:main",

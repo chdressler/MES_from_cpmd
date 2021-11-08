@@ -19,23 +19,41 @@ def main():
         args = parser.parse_args()
         path_pot = args.path_to_potentials
         path_inp = args.path_to_input_for_cpmd
+        n = args.n
+        noslurm = args.noslurm
+        if noslurm:
+            path_inp_job = path_inp + "/wfo.job"
+        else:    
+            path_inp_job = path_inp + "/calc.job"
+        path_inp += "/wfo.inp" 
+
+
+
+def calc_dens_resp(path_inp, path_inp_job, path_pot, n, noslurm):
+        #list_files = subprocess.run(["cp", path_inp +"/wfo.inp", "." ])
         wd = os.getcwd()
-        for j in range(args.n):
+        for j in range(n):
             i = j+1
             list_files = subprocess.run(["mkdir", str(i)]) 
             os.chdir("./"+ str(i))
-            list_files = subprocess.run(["cp", path_inp +"/wfo.inp", "." ])
+            
+            #list_files = subprocess.run(["cp", path_inp +"/wfo.inp", "." ])
+            list_files = subprocess.run(["cp", path_inp, "." ])
+            
             #list_files = subprocess.run(["cp", path_inp +"/wfo.job", "." ])
-            list_files = subprocess.run(["cp", path_inp +"/calc.job", "." ])
+            #list_files = subprocess.run(["cp", path_inp +"/calc.job", "." ])
+            #list_files = subprocess.run(["cp", path_inp +"/calc.job", "." ])
+            list_files = subprocess.run(["cp", path_inp_job, "." ])
             #path_pot_final = 
             list_files = subprocess.run(["cp", path_pot +"/cartesian-functions-%05d.wan"%(i), "extpot.unfo.grid" ])
             os.chdir(wd)            
-        for j in range(args.n):
+        for j in range(n):
             i = j+1
             os.chdir("./"+ str(i))
             print("caluate density for potential number " + str(i))
-            if args.noslurm:
+            if noslurm:
                 list_files = subprocess.run(["bash", "wfo.job"])
             else:    
+                #list_files = subprocess.run(["sbatch", "--wait" , "calc.job"]) 
                 list_files = subprocess.run(["sbatch", "calc.job"])
             os.chdir(wd)
