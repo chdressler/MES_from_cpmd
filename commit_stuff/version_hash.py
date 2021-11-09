@@ -1,3 +1,3 @@
-commit_hash = "0f6a51a5de2bf3661b1466dbb6c457ae116275cf"
-commit_message = "changes"
-commit_date = "Mon Nov 8 10:12:30 2021 +0100"
+commit_hash = "f049272a705f91635d3fbf611df390f16a04262d"
+commit_message = "improved requiremnts"
+commit_date = "Tue Nov 9 15:50:39 2021 +0100"

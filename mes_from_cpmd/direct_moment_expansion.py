@@ -107,7 +107,7 @@ def perform_direct_me(fn_cube, path_diff, path_pot, n_states, smooth):
         print(n_states -1)
         for i in range(n_states-1):
             for j in range(n_states-1):
-                mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*1000*np.sqrt(d3r_au)
+                mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*1000*np.sqrt(d3r_au) *  -1000
                 #mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*1000*np.sqrt(d3r_au) *  -1000 /8
                 #mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*d3r_au  
 
