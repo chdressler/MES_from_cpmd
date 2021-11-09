@@ -1,4 +1,4 @@
-numpy
-scipy
 wheel
 ipdb
+numpy==1.17.2
+scipy==1.3.1
