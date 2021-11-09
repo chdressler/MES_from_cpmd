@@ -107,8 +107,8 @@ def perform_direct_me(fn_cube, path_diff, path_pot, n_states, smooth):
         print(n_states -1)
         for i in range(n_states-1):
             for j in range(n_states-1):
-                #mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*1000*np.sqrt(d3r_au)
-                mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*1000*np.sqrt(d3r_au) *  -1000 /8
+                mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*1000*np.sqrt(d3r_au)
+                #mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*1000*np.sqrt(d3r_au) *  -1000 /8
                 #mom_states_new[i] += inv_chol_right[j,i] * states_tilde[j+1]*d3r_au  
 
         bn_states_out = 'dme-%05d.wan'       
@@ -118,7 +118,7 @@ def perform_direct_me(fn_cube, path_diff, path_pot, n_states, smooth):
         for i_state in range(n_states-1):
            state_data = np.asfortranarray(mom_states_new[i_state]).astype(np.float64)
            fio.fortran_write_unformatted(bn_states_out%(i_state+1), state_data, n_x, n_y, n_z)
-           #cube.WriteCubeFile(bn_cube_out%(i_state+1),'','', cell_data_mom['numbers'], cell_data_mom['coords_au'], cell_data_mom['cell_au'], state_data, origin=cell_data_mom['origin_au'])
+           cube.WriteCubeFile(bn_cube_out%(i_state+1),'','', cell_data_mom['numbers'], cell_data_mom['coords_au'], cell_data_mom['cell_au'], state_data, origin=cell_data_mom['origin_au'])
 
 
 

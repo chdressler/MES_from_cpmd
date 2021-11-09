@@ -20,6 +20,7 @@ def main():
         parser.add_argument("path_to_slurm", help="path to  slurm job file (including paths to cpmd and cpmd_to_cube executable,recommended name: wfo.job)")
         parser.add_argument("n", help="number of basis funtion of perturbing potentials used for calculation of the moment expanded states",type=int)
         parser.add_argument("--noslurm",  action="store_true", help="Calc jobs on current node.")
+        parser.add_argument('--fac', type = float,  help='Factor for rescaling of potential')
         args = parser.parse_args()
         path_input = args.path_to_input_for_cpmd
         path_slurm = args.path_to_slurm
@@ -34,7 +35,7 @@ def main():
                 list_files = subprocess.run(["bash", "wfo.job"])
                 #list_files = subprocess.run(["bash", "wfo.job"])
             else:    
-                i#list_files = subprocess.run(["sbatch", "calc.job"]) 
+                #list_files = subprocess.run(["sbatch", "calc.job"]) 
                 list_files = subprocess.run(["sbatch", "--wait" , "calc.job"]) 
             os.chdir(wd)
         #input("Press Enter to continue (after slurm jobs are finished)...")
